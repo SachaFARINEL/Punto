@@ -1,0 +1,33 @@
+version: '3'
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/db
+
+  api:
+    build: ./punto_back
+    volumes:
+      - ./punto_back:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - "3500:3500"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
+  front:
+    build: ./punto_front
+    volumes:
+      - ./punto_front:/home/node/app
+      - /home/node/app/node_modules
+    ports:
+      - "3000:3000"
+    links:
+      - api
+    depends_on:
+      - api
