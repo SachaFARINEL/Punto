@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 * {
     margin: 0;
@@ -7,32 +7,43 @@
 }
 
 html {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 2.5rem;
-    color: red;
+    font-size: 1rem;
 }
 
 body {
-    min-height: 100vh;
-    background-color: #000;
-    color: whitesmoke;
-    display: grid;
-    place-content: center;
-    padding: 1rem;
+    font-family: 'Fira Code', monospace;
+    color: white;
+    background: black;
+}
+
+.div_title {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_punto {
+    font-size: 8rem;
+}
+
+.title_api {
+    font-size: 3rem;
 }
 
 .punto__red{
-    color: red
+    color: #e2100a
 }
 
 .punto__blue{
-    color: blue
+    color: #00b4e7
 }
 
 .punto__yellow{
-    color: yellow
+    color: #feb008
 }
 
 .punto__green{
-    color: green
+    color: #6dba0f
 }

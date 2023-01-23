@@ -1,7 +1,7 @@
 version: '3'
 services:
   mongo:
-    container_name: mongo
+    container_name: MongoDB
     image: mongo
     ports:
       - "27017:27017"
@@ -10,6 +10,7 @@ services:
 
   api:
     build: ./punto_back
+    container_name: ExpressJS
     volumes:
       - ./punto_back:/home/node/app
       - /home/node/app/node_modules
@@ -22,6 +23,7 @@ services:
 
   front:
     build: ./punto_front
+    container_name: ReactJS
     volumes:
       - ./punto_front:/home/node/app
       - /home/node/app/node_modules
