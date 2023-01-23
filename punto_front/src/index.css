@@ -1,13 +1,103 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
+/* || VARIABLES */
+
+:root {
+    /* COLORS */
+    --PUNTORED: #e2100a;
+    --PUNTOBLUE: #00b4e7;
+    --PUNTOYELLOW: #feb008;
+    --PUNTOGREEN: #6dba0f;
+    --LINK-COLOR: whitesmoke;
+    --LINK-HOVER: rgba(245, 245, 245, 0.9);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 1rem;
+}
+
+body {
+    font-family: 'Fira Code', monospace;
+    color: white;
+    background: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+a:visited {
+    color: var(--LINK-COLOR);
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--LINK-HOVER);
+}
+
+.div_title {
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.div_punto__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_punto__sub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.title_punto {
+    font-size: 8rem;
+}
+
+.subtitle_punto {
+    font-size: 2rem;
+}
+
+.subtitle_punto__small {
+    font-size: 1rem;
+}
+
+.title_sub {
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.signup {
+    border: 0.2rem solid white;
+    border-radius: 1rem;
+}
+
+.title__red {
+    color: var(--PUNTORED)
+}
+
+.title__blue {
+    color: var(--PUNTOBLUE)
+}
+
+.title__yellow {
+    color: var(--PUNTOYELLOW)
+}
+
+.title__green {
+    color: var(--PUNTOGREEN)
 }
