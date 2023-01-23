@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "da59aac6-ee7b-49b0-aeca-20d4bd1acb9f",
+		"name": "Boards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19918884"
+	},
+	"item": [
+		{
+			"name": "GET Boards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cards",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a Board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/boards?_id=63cd1da940f89aa60f824583",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boards"
+					],
+					"query": [
+						{
+							"key": "_id",
+							"value": "63cd1da940f89aa60f824583"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Board",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/cards/create",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cards",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH Board",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"63cd25b2c6a981a53f44ee15\",\r\n    \"cases\": \r\n    [\r\n        {\r\n        \"5\": \"63ccf08fe71b9ab8b3533b55\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/boards",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"boards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETED Board",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"_id\": \"63c723f723f2d7b2b04c922d\"\r\n    }"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "ce0e7768-4d0a-4a06-b2d1-14c123ccf1f7",
+		"name": "Cards",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19918884"
+	},
+	"item": [
+		{
+			"name": "GET Cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/cards",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
