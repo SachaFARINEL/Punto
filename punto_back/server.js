@@ -10,7 +10,8 @@ const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const {logEvents} = require('./middleware/logger')
-const cardsCreation = require('./config/cardsCreation')
+const cardsCreation = require('./scripts/script.cardsCreation')
+const createFirstUser = require('./scripts/script.createFirstUser')
 const PORT = process.env.PORT || 3500
 
 console.log(`On ${process.env.NODE_ENV}`)
@@ -57,8 +58,9 @@ app.use(errorHandler)
 mongoose.connection.once('open', () => {
     if (process.env.NODE_ENV !== 'test') {
         console.log('Connected to MongoDB')
-        const server = app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+        app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
 
+        createFirstUser()
         cardsCreation()
     }
 })

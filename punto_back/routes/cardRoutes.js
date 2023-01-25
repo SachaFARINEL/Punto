@@ -8,4 +8,7 @@ router.use(verifyJWT)
 router.route('/')
     .get(cardsController.getAllCards)
 
+router.route('/start')
+    .get(cardsController.shuffleAndDistribute)
+
 module.exports = router
