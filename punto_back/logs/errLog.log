@@ -3,3 +3,4 @@
 20230123	20:41:43	774fc0ee-9e27-46ee-94ad-5bf88c96ed08	Error: Not allowed by CORS	GET	/users	http://localhost:3006
 20230123	20:42:05	2060fa53-f4b7-4eed-a455-e4086268847d	Error: Not allowed by CORS	GET	/users	http://localhost:3006
 20230123	20:42:11	80bcbd95-c69a-4584-892b-33502ce7bb98	Error: Not allowed by CORS	GET	/users	http://localhost:3006
+20230124	09:31:25	667aea46-dad8-417e-addf-0782e6d2f60d	SyntaxError: Expected ':' after property name in JSON at position 16	POST	/users	undefined

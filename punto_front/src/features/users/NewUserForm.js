@@ -1,9 +1,8 @@
 import {useState, useEffect} from "react"
 import {useAddNewUserMutation} from "./usersApiSlice"
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSave} from "@fortawesome/free-solid-svg-icons"
-import {Button, TextField} from "@mui/material";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
@@ -121,17 +120,18 @@ const NewUserForm = () => {
                     />
 
 
-                        <button
-                            title="Save"
-                            className="btn_form_user"
-                            disabled={!canSave}
-                            style={{
-                                width: '100%',fontSize: '1.5rem',
-                                border: '0.2rem solid white', borderRadius: '1rem', padding: '0.5rem', marginTop: '2rem'
-                            }}
-                        >
-                            Validate <FontAwesomeIcon icon={faSave}/><FontAwesomeIcon icon="fa-solid fa-floppy-disk" /><FontAwesomeIcon icon="fa-solid fa-floppy-disk-circle-xmark" />
-                        </button>
+                    <button
+                        title="Save"
+                        className="btn_form_user"
+                        disabled={!canSave}
+                        style={{
+                            width: '100%', fontSize: '1.5rem',
+                            border: '0.2rem solid white', borderRadius: '1rem', padding: '0.5rem', marginTop: '2rem'
+                        }}
+                    >
+                        Validate <FontAwesomeIcon icon={faSave}/><FontAwesomeIcon
+                        icon="fa-solid fa-floppy-disk"/><FontAwesomeIcon icon="fa-solid fa-floppy-disk-circle-xmark"/>
+                    </button>
 
 
                 </form>
