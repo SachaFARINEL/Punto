@@ -17,7 +17,10 @@ const getAllCards = asyncHandler(async (req, res) => {
 })
 
 const shuffleAndDistribute = asyncHandler(async (req, res) => {
-    const playersNumber = req.query.players
+    if (!req.query.players || req.query.players > 4) {
+        return res.status(400).json({message: 'You need at least 2 players and max 4'})
+    }
+
     const cards = await Card.find().lean()
     let decks = {}
 
@@ -26,53 +29,54 @@ const shuffleAndDistribute = asyncHandler(async (req, res) => {
         return acc;
     }, {red: [], blue: [], green: [], yellow: []});
 
-    const randomize = (tab) => {
-        var i, j, tmp;
-        for (i = tab.length - 1; i > 0; i--) {
-            j = Math.floor(Math.random() * (i + 1));
-            tmp = tab[i];
-            tab[i] = tab[j];
-            tab[j] = tmp;
-        }
-        return tab;
-    }
+    const redCards = cardsByColors.red
+    const blueCards = cardsByColors.blue
+    const yellowCards = cardsByColors.yellow
+    const greenCards = cardsByColors.green
 
-    switch (playersNumber) {
+    switch (req.query.players) {
         case "2":
-            const firstHand = cardsByColors.red.concat(cardsByColors.blue)
-            const secondHand = cardsByColors.yellow.concat(cardsByColors.green)
             decks = {
-                "firstDeck": randomize(firstHand),
-                "secondDeck": randomize(secondHand)
+                "firstDeck": randomize(redCards.concat(blueCards)),
+                "secondDeck": randomize(yellowCards.concat(greenCards))
             }
             break
         case "3":
-            decks = {
-                "firstDeck": cardsByColors.red,
-                "secondDeck": cardsByColors.yellow,
-                "thirdDeck": cardsByColors.blue
-            }
+            greenCards.forEach(color => color.neutral = true);
 
-            for (key in decks) {
-                decks[key].concat(cardsByColors.green.slice(6))
-                randomize(decks[key])
+            const firstThird = greenCards.slice(0, greenCards.length / 3);
+            const secondThird = greenCards.slice(greenCards.length / 3, 2 * greenCards.length / 3);
+            const thirdThird = greenCards.slice(2 * greenCards.length / 3);
+
+            decks = {
+                "firstDeck": randomize(redCards.concat(firstThird)),
+                "secondDeck": randomize(blueCards.concat(secondThird)),
+                "thirdDeck": randomize(yellowCards.concat(thirdThird))
             }
             break
         case "4":
             decks = {
-                "firstDeck": randomize(cardsByColors.red),
-                "secondDeck": randomize(cardsByColors.blue),
-                "thirdDeck": randomize(cardsByColors.yellow),
-                "fourthDeck": randomize(cardsByColors.green),
+                "firstDeck": randomize(redCards),
+                "secondDeck": randomize(blueCards),
+                "thirdDeck": randomize(yellowCards),
+                "fourthDeck": randomize(greenCards),
             }
-        default:
-            console.log('Sorry, you need to be at least 2 and max 4');
+            break
     }
 
     res.json(decks)
-
-
 })
+
+const randomize = arr => {
+    var i, j, tmp;
+    for (i = arr.length - 1; i > 0; i--) {
+        j = Math.floor(Math.random() * (i + 1));
+        tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
+    }
+    return arr;
+}
 
 module.exports = {
     getAllCards,
