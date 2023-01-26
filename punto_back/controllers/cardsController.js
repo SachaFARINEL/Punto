@@ -18,35 +18,58 @@ const getAllCards = asyncHandler(async (req, res) => {
 
 const shuffleAndDistribute = asyncHandler(async (req, res) => {
     const playersNumber = req.query.players
-    console.log(playersNumber)
     const cards = await Card.find().lean()
-    let deck = {}
+    let decks = {}
 
     const cardsByColors = cards.reduce((acc, card) => {
         acc[card.color].push(card);
         return acc;
     }, {red: [], blue: [], green: [], yellow: []});
 
+    const randomize = (tab) => {
+        var i, j, tmp;
+        for (i = tab.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            tmp = tab[i];
+            tab[i] = tab[j];
+            tab[j] = tmp;
+        }
+        return tab;
+    }
+
     switch (playersNumber) {
         case "2":
-            deck = {
-                1: [cardsByColors.red, cardsByColors.blue],
-                2: [cardsByColors.yellow, cardsByColors.green]
+            const firstHand = cardsByColors.red.concat(cardsByColors.blue)
+            const secondHand = cardsByColors.yellow.concat(cardsByColors.green)
+            decks = {
+                "firstDeck": randomize(firstHand),
+                "secondDeck": randomize(secondHand)
             }
+            break
         case "3":
+            decks = {
+                "firstDeck": cardsByColors.red,
+                "secondDeck": cardsByColors.yellow,
+                "thirdDeck": cardsByColors.blue
+            }
+
+            for (key in decks) {
+                decks[key].concat(cardsByColors.green.slice(6))
+                randomize(decks[key])
+            }
             break
         case "4":
-            deck = {
-                1: [cardsByColors.red],
-                2: [cardsByColors.yellow],
-                3: [cardsByColors.blue],
-                4: [cardsByColors.green]
+            decks = {
+                "firstDeck": randomize(cardsByColors.red),
+                "secondDeck": randomize(cardsByColors.blue),
+                "thirdDeck": randomize(cardsByColors.yellow),
+                "fourthDeck": randomize(cardsByColors.green),
             }
         default:
             console.log('Sorry, you need to be at least 2 and max 4');
     }
 
-    res.json(deck)
+    res.json(decks)
 
 
 })

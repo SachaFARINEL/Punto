@@ -3,7 +3,13 @@ const router = express.Router()
 const usersController = require('../controllers/usersController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-router.use(verifyJWT)
+router.use(function (req, res, next) {
+    if (req.method !== 'POST') {
+        verifyJWT(req, res, next);
+    } else {
+        next();
+    }
+});
 
 router.route('/')
     .get(usersController.getAllUsers)

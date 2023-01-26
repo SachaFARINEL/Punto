@@ -4,3 +4,25 @@
 20230123	20:42:05	2060fa53-f4b7-4eed-a455-e4086268847d	Error: Not allowed by CORS	GET	/users	http://localhost:3006
 20230123	20:42:11	80bcbd95-c69a-4584-892b-33502ce7bb98	Error: Not allowed by CORS	GET	/users	http://localhost:3006
 20230124	09:31:25	667aea46-dad8-417e-addf-0782e6d2f60d	SyntaxError: Expected ':' after property name in JSON at position 16	POST	/users	undefined
+20230126	07:35:21	1653ec17-4b37-4bee-87f0-deb4cb12b85b	Too Many Requests: Too many login attempts from this IP, please try again after a 60 second pause	POST	/	undefined
+20230126	07:42:43	2fd74de6-bd1e-4ba6-afc6-0958ebda6dce	RangeError: Maximum call stack size exceeded	GET	/users	undefined
+20230126	07:42:51	6a95ed25-c3cf-4b52-b198-dd5f0b4f51b6	RangeError: Maximum call stack size exceeded	DELETE	/users	undefined
+20230126	08:03:57	50076968-e9ba-44da-80ad-2885c331d78c	TypeError: Cannot read properties of undefined (reading 'push')	GET	/cards/start?players=3	undefined
+20230126	08:04:28	a065e135-5ca5-4005-997c-42b5bc2bb268	TypeError: Cannot read properties of undefined (reading 'push')	GET	/cards/start?players=2	undefined
+20230126	08:04:52	f868387d-7d21-45c7-8aa4-11be14141b8b	TypeError: Cannot read properties of undefined (reading 'push')	GET	/cards/start?players=2	undefined
+20230126	08:05:41	c7f11860-3427-41af-bc66-21d7324209e5	TypeError: Cannot read properties of undefined (reading 'push')	GET	/cards/start?players=2	undefined
+20230126	08:08:46	b4abd19d-3327-4084-babd-7cf4c5cb0114	TypeError: Cannot read properties of undefined (reading 'slice')	GET	/cards/start?players=2	undefined
+20230126	08:29:48	87a6d5f0-bb77-4ddb-be43-f4cd91370fb5	TypeError: key.push is not a function	GET	/cards/start?players=3	undefined
+20230126	08:30:15	93a70ae3-7530-400b-a808-10ae8a4d0cbd	TypeError: key.push is not a function	GET	/cards/start?players=3	undefined
+20230126	10:38:37	dd8bba6a-e9ed-40e8-b8c1-923d42c1d83f	TypeError: deck[key][0][0].push is not a function	GET	/cards/start?players=3	undefined
+20230126	10:57:50	b2c720f2-6ce0-4fd0-b64e-0383fb116f29	ReferenceError: test is not defined	GET	/cards/start?players=2	undefined
+20230126	11:02:45	9682cfa4-8a3c-449a-a785-e526723281dc	ReferenceError: Ò is not defined	GET	/cards/start?players=2	undefined
+20230126	11:21:14	f298b828-75ad-4a30-a6cf-9ffbbe07d28d	ReferenceError: dard is not defined	GET	/cards/start?players=3	undefined
+20230126	11:22:56	38a0999e-d73b-4ffb-a931-2d650441a429	TypeError: Cannot read properties of undefined (reading '1')	GET	/cards/start?players=3	undefined
+20230126	11:26:48	d0851878-78f8-4f49-a145-4d48c599e391	ReferenceError: deck is not defined	GET	/cards/start?players=3	undefined
+20230126	11:27:02	01ffda82-a845-48c5-a3dd-5bdf5296824f	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
+20230126	11:27:03	b0d47315-1732-4b1d-a04f-118b485424f4	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
+20230126	11:27:21	072d4019-1d14-4d47-8a2a-156f5e9dfc26	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
+20230126	11:27:45	d57fd193-f691-4d0a-95ef-a7ed63f2a70e	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
+20230126	11:31:47	b5a7699f-a387-404f-9715-0385fdc87cc7	ReferenceError: deck is not defined	GET	/cards/start?players=3	undefined
+20230126	11:31:49	783085ee-37d0-481b-91be-26c0f32cd294	ReferenceError: deck is not defined	GET	/cards/start?players=3	undefined
