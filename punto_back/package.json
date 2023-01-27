@@ -4,7 +4,7 @@
   "description": "Student Project",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "nodemon -L server",
     "dev": "nodemon server",
     "test": "cross-env NODE_ENV=test jest --testTimeout=50000 --runInBand --watchAll"
   },
@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.3",
     "mongoose-sequence": "^5.3.1",
+    "socket.io": "^4.5.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

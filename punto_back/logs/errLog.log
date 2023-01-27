@@ -26,3 +26,6 @@
 20230126	11:27:45	d57fd193-f691-4d0a-95ef-a7ed63f2a70e	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
 20230126	11:31:47	b5a7699f-a387-404f-9715-0385fdc87cc7	ReferenceError: deck is not defined	GET	/cards/start?players=3	undefined
 20230126	11:31:49	783085ee-37d0-481b-91be-26c0f32cd294	ReferenceError: deck is not defined	GET	/cards/start?players=3	undefined
+20230126	17:30:38	9fcd831a-f4e7-4fba-9fd3-a02725675f7c	ReferenceError: Cannot access 'deck' before initialization	GET	/cards/start?players=3	undefined
+20230126	17:30:58	6dd6f4b8-156e-4a47-8f07-a257bef21f2c	TypeError: Cannot read properties of undefined (reading 'concat')	GET	/cards/start?players=3	undefined
+20230126	17:37:24	617b1d1e-cfa7-4831-bdb9-cdfc78777376	TypeError: cardsByColors.green is not a function	GET	/cards/start?players=3	undefined

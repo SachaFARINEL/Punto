@@ -1,6 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 const path = require('path')
 const {logger} = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
@@ -55,10 +59,14 @@ app.all('*', (req, res) => {
 
 app.use(errorHandler)
 
+io.on('connection', (socket) => {
+    console.log('a user connected');
+});
+
 mongoose.connection.once('open', () => {
     if (process.env.NODE_ENV !== 'test') {
         console.log('Connected to MongoDB')
-        app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
+        server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
 
         createFirstUser()
         cardsCreation()
