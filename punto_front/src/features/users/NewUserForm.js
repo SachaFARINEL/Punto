@@ -3,10 +3,68 @@ import {useAddNewUserMutation} from "./usersApiSlice"
 import {useNavigate} from "react-router-dom"
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSave} from "@fortawesome/free-solid-svg-icons"
+import styled from 'styled-components';
+import {faBackward} from "@fortawesome/free-solid-svg-icons"
+import {Link} from 'react-router-dom'
+import {puntoColor} from "../../ressources/puntoColor";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
+const USERNAME_REGEX = /^.{4,}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const BIRTHDAY_REGEX = /^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)\d\d$/
 
+const Icon = styled.div`
+  margin-left: 5rem;
+  font-size: 2rem;
+`
+const Title = styled.h1`
+  text-align: center;
+  margin-top: 2rem;
+`
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+`
+const DivNewUserForm = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Input = styled.input`
+  background: #ACAAAAE5;
+  width: 20rem;
+  height: 2rem;
+  border: 2.5px solid ${props => props.borderColor};
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  &:focus {
+    outline: none;
+  }
+`
+const Button = styled.button`
+  border: 2.5px solid white;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: black;
+  color: white;
+  width: 10rem;
+  margin: auto;
+
+  &:hover {
+    cursor: pointer;
+    border: 2.5px solid #ACAAAAE5;
+    color: #ACAAAAE5;
+  }
+`
+const Error = styled.p`
+  color: ${puntoColor.red};
+  font-size: 1.5rem
+`
 const NewUserForm = () => {
 
     const [addNewUser, {
@@ -21,17 +79,27 @@ const NewUserForm = () => {
     const [email, setEmail] = useState('')
     const [validEmail, setValidEmail] = useState(false)
     const [username, setUsername] = useState('')
+    const [validUsername, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
     const [birthday, setBirthday] = useState('')
+    const [validBirthday, setValidBirthday] = useState(false)
 
     useEffect(() => {
         setValidEmail(EMAIL_REGEX.test(email))
     }, [email])
 
     useEffect(() => {
+        setValidUsername(USERNAME_REGEX.test(username))
+    }, [username])
+
+    useEffect(() => {
         setValidPassword(PWD_REGEX.test(password))
     }, [password])
+
+    useEffect(() => {
+        setValidBirthday(BIRTHDAY_REGEX.test(birthday))
+    }, [birthday])
 
     useEffect(() => {
         if (isSuccess) {
@@ -39,7 +107,7 @@ const NewUserForm = () => {
             setUsername('')
             setPassword('')
             setBirthday('')
-            navigate('/start')
+            navigate('/lobby')
         }
     }, [isSuccess, navigate])
 
@@ -48,7 +116,7 @@ const NewUserForm = () => {
     const onPasswordChanged = e => setPassword(e.target.value)
     const onBirthdayChanged = e => setBirthday(e.target.value)
 
-    const canSave = [validEmail, username, validPassword, birthday].every(Boolean) && !isLoading
+    const canSave = [validEmail, validUsername, validPassword, validBirthday].every(Boolean) && !isLoading
 
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
@@ -57,86 +125,83 @@ const NewUserForm = () => {
         }
     }
 
-    const errClass = isError ? "errmsg" : "offscreen"
-    const validEmailClass = !validEmail ? 'form__input--incomplete' : ''
-    const validPwdClass = !validPassword ? 'form__input--incomplete' : ''
-
     const content = (
-        <>
-            <FontAwesomeIcon icon="fa-regular fa-backward"/>
+        <div>
+            <Icon>
+                <Link to={'/'}>
+                    <FontAwesomeIcon icon={faBackward}/>
+                </Link>
+            </Icon>
 
-            <div className="form__user">
-                <p className={errClass}>{error?.data?.message}</p>
+            <Title>Sign up for the adventure</Title>
+
+            <Form>
+                <Error>{error?.data?.message}</Error>
 
                 <form className="form" onSubmit={onSaveUserClicked}>
-                    <div className="form__title-row">
-                        <h1>Entering the adventure</h1>
-                    </div>
 
-                    <label className="form__label" htmlFor="email">
-                        Email: <span className="nowrap"></span></label>
-                    <input
-                        className={`form__input ${validEmailClass}`}
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="off"
-                        value={email}
-                        onChange={onEmailChanged}
-                    />
+                    <DivNewUserForm>
 
-                    <label className="form__label" htmlFor="username">
-                        Username: <span className="nowrap">[3-20 letters]</span></label>
-                    <input
-                        className={`form__input`}
-                        id="username"
-                        name="username"
-                        type="text"
-                        autoComplete="off"
-                        value={username}
-                        onChange={onUsernameChanged}
-                    />
+                        <label className="form__label" htmlFor="email">
+                            Email: <span className="nowrap"></span></label>
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            autoComplete="off"
+                            value={email}
+                            onChange={onEmailChanged}
+                            borderColor={validEmail ? puntoColor.green : puntoColor.red}
+                        />
 
-                    <label className="form__label" htmlFor="password">
-                        Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-                    <input
-                        className={`form__input ${validPwdClass}`}
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={password}
-                        onChange={onPasswordChanged}
-                    />
+                        <label className="form__label" htmlFor="username">
+                            Username: <span className="nowrap">[3-20 letters]</span></label>
+                        <Input
+                            className={`form__input`}
+                            id="username"
+                            name="username"
+                            type="text"
+                            autoComplete="off"
+                            value={username}
+                            onChange={onUsernameChanged}
+                            borderColor={validUsername ? puntoColor.green : puntoColor.red}
+                        />
 
-                    <label className="form__label" htmlFor="birthday">
-                        Birthday: <span className="nowrap">[JJ/MM/AAAA]</span></label>
-                    <input
-                        className={`form__input`}
-                        id="birthday"
-                        name="birthday"
-                        type="text"
-                        value={birthday}
-                        onChange={onBirthdayChanged}
-                    />
+                        <label className="form__label" htmlFor="password">
+                            Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
+                        <Input
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={onPasswordChanged}
+                            borderColor={validPassword ? puntoColor.green : puntoColor.red}
+                        />
 
+                        <label className="form__label" htmlFor="birthday">
+                            Birthday: <span className="nowrap">[JJ/MM/AAAA]</span></label>
+                        <Input
+                            className={`form__input`}
+                            id="birthday"
+                            name="birthday"
+                            type="text"
+                            value={birthday}
+                            onChange={onBirthdayChanged}
+                            borderColor={validBirthday ? puntoColor.green : puntoColor.red}
+                        />
 
-                    <button
-                        title="Save"
-                        className="btn_form_user"
-                        disabled={!canSave}
-                        style={{
-                            width: '100%', fontSize: '1.5rem',
-                            border: '0.2rem solid white', borderRadius: '1rem', padding: '0.5rem', marginTop: '2rem'
-                        }}
-                    >
-                        Validate <FontAwesomeIcon icon={faSave}/><FontAwesomeIcon
-                        icon="fa-solid fa-floppy-disk"/><FontAwesomeIcon icon="fa-solid fa-floppy-disk-circle-xmark"/>
-                    </button>
+                        <Button
+                            title="Save"
+                            disabled={!canSave}
+                            style={{visibility: canSave ? 'visible' : 'hidden'}}
+                        >
+                            Sign In <FontAwesomeIcon icon={faSave}/>
+                        </Button>
 
-
+                    </DivNewUserForm>
                 </form>
-            </div>
-        </>
+            </Form>
+        </div>
     )
 
     return content

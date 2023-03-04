@@ -6,6 +6,63 @@ import {useLoginMutation} from './authApiSlice'
 //import usePersist from '../../hooks/usePersist'
 //import useTitle from '../../hooks/useTitle'
 import PulseLoader from 'react-spinners/PulseLoader'
+import styled from "styled-components";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBackward} from "@fortawesome/free-solid-svg-icons";
+import {puntoColor} from "../../ressources/puntoColor";
+
+const Icon = styled.div`
+  margin-left: 5rem;
+  font-size: 2rem;
+`
+const Title = styled.h1`
+  text-align: center;
+  margin-top: 2rem;
+`
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+`
+const DivNewUserForm = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+const Input = styled.input`
+  background: #ACAAAAE5;
+  width: 20rem;
+  height: 2rem;
+  border: 2.5px solid darkgray;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+
+  &:focus {
+    outline: none;
+  }
+`
+const Button = styled.button`
+  border: 2.5px solid white;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: black;
+  color: white;
+  width: 10rem;
+  margin: auto;
+
+  &:hover {
+    cursor: pointer;
+    border: 2.5px solid #ACAAAAE5;
+    color: #ACAAAAE5;
+  }
+`
+const Error = styled.p`
+color: ${puntoColor.red};
+font-size:1.5rem
+`
 
 const Login = () => {
     //useTitle('Player Login')
@@ -35,10 +92,11 @@ const Login = () => {
         e.preventDefault()
         try {
             const {accessToken} = await login({email, password}).unwrap()
+            console.log(accessToken)
             dispatch(setCredentials({accessToken}))
             setEmail('')
             setPassword('')
-            navigate('/dash')
+            navigate('/lobby')
         } catch (err) {
             if (!err.status) {
                 setErrMsg('No Server Response');
@@ -52,64 +110,52 @@ const Login = () => {
             errRef.current.focus();
         }
     }
-
     const handleUserInput = (e) => setEmail(e.target.value)
     const handlePwdInput = (e) => setPassword(e.target.value)
     //const handleToggle = () => setPersist(prev => !prev)
 
-    const errClass = errMsg ? "errmsg" : "offscreen"
-
     if (isLoading) return <PulseLoader color={"#FFF"}/>
 
     const content = (
-        <section className="public">
-            <header>
-                <h1>Player Login</h1>
-            </header>
-            <main className="login">
-                <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
+        <div>
+            <Icon>
+                <Link to={'/'}>
+                    <FontAwesomeIcon icon={faBackward}/>
+                </Link>
+            </Icon>
+
+            <Title>Start the adventure</Title>
+
+            <Form>
+                <Error aria-live="assertive">{errMsg}</Error>
 
                 <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        className="form__input"
-                        type="text"
-                        id="email"
-                        ref={userRef}
-                        value={email}
-                        onChange={handleUserInput}
-                        autoComplete="off"
-                        required
-                    />
 
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        className="form__input"
-                        type="password"
-                        id="password"
-                        onChange={handlePwdInput}
-                        value={password}
-                        required
-                    />
-                    <button className="form__submit-button">Sign In</button>
-
-
-                    {/*<label htmlFor="persist" className="form__persist">
-                        <input
-                            type="checkbox"
-                            className="form__checkbox"
-                            id="persist"
-                            onChange={handleToggle}
-                            checked={persist}
+                    <DivNewUserForm>
+                        <label htmlFor="email">Email:</label>
+                        <Input
+                            type="text"
+                            id="email"
+                            ref={userRef}
+                            value={email}
+                            onChange={handleUserInput}
+                            autoComplete="off"
+                            required
                         />
-                        Trust This Device
-                    </label>*/}
+
+                        <label htmlFor="password">Password:</label>
+                        <Input
+                            type="password"
+                            id="password"
+                            onChange={handlePwdInput}
+                            value={password}
+                            required
+                        />
+                        <Button>Sign In</Button>
+                    </DivNewUserForm>
                 </form>
-            </main>
-            <footer>
-                <Link to="/">Back to Home</Link>
-            </footer>
-        </section>
+            </Form>
+        </div>
     )
 
     return content

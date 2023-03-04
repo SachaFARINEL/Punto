@@ -23,7 +23,6 @@ function App() {
                 <Route element={<Prefetch/>}>
                     <Route path="lobby" element={<LobbyLayout/>}>
 
-
                     </Route>
                 </Route>
             </Route>

@@ -1,6 +1,6 @@
 export const puntoColor = {
-    blue: '#05AFE9',
-    yellow: '#F1B112',
-    red: '#E1020B',
-    green: '#84A64E',
+    blue: '#00b4e7',
+    yellow: '#feb008',
+    red: '#e2100a',
+    green: '#6dba0f',
 }

@@ -4,21 +4,8 @@
 
 :root {
     /* COLORS */
-    --PUNTORED: #e2100a;
-    --PUNTOBLUE: #00b4e7;
-    --PUNTOYELLOW: #feb008;
-    --PUNTOGREEN: #6dba0f;
     --LINK-COLOR: whitesmoke;
-    --LINK-HOVER: rgba(245, 245, 245, 0.9);
-}
-
-/* || UTILITY CLASSES */
-.errmsg {
-    display: inline-block;
-    background-color: white;
-    color: red;
-    padding: 0.25em;
-    margin-bottom: 0.5em;
+    --LINK-HOVER: rgba(172, 170, 170, 0.9);
 }
 
 * {
@@ -51,120 +38,14 @@ a:focus-visible {
     color: var(--LINK-HOVER);
 }
 
-.title__red {
-    color: var(--PUNTORED)
-}
-
-.title__blue {
-    color: var(--PUNTOBLUE)
-}
-
-.title__yellow {
-    color: var(--PUNTOYELLOW)
-}
-
-.title__green {
-    color: var(--PUNTOGREEN)
-}
-
-
-.div_title {
-    display: flex;
-    flex-direction: column;
-    gap: 10rem;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
-
-.div_punto__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.div_punto__sub {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.title_punto {
-    font-size: 8rem;
-}
-
-.subtitle_punto {
-    font-size: 2rem;
-}
-
-.subtitle_punto__small {
-    font-size: 1rem;
-}
-
-.title_sub {
-    font-size: 2rem;
-    padding: 1rem;
-}
-
-.signup {
-    border: 0.2rem solid white;
-    border-radius: 1rem;
-}
-
-.layout__punto {
-    font-size: 4rem;
-    display: flex;
-    justify-content: center;
-    height: 10vh;
-}
-
-.form__user {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 70vh;
-    align-items: center;
-}
-
-/* FORM */
-
-.form__input--incomplete {
-    border: 1px solid var(--PUNTORED);
-    outline: 1px solid var(--PUNTORED);
-}
-
-.form {
-    display: flex;
-    flex-flow: column nowrap;
-    gap: 0.75em;
-    max-width: 800px;
-}
-
-.form input {
-    width: 100%;
-    background: #2d2b2b;
-    color: white;
-    font-size: 1.5rem;
-    border: 0.2rem solid white;
-    border-radius: 1rem;
-    padding: 0.5rem;
-}
-
-.form__title-row {
-    margin-bottom: 2rem;
+input,
+button,
+textarea,
+select {
+    font: inherit;
 }
 
 .form__input--incomplete {
-    border: 1px solid var(--PUNTORED);
-    outline: 2px solid var(--PUNTORED);
-}
-
-.btn_form_user {
-    background: black;
-}
-
-.btn_form_user:disabled
-{
-    color : #2d2b2b;
+    border: 1px solid darkred;
+    outline: 1px solid darkred;
 }

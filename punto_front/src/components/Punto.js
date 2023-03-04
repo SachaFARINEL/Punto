@@ -1,12 +1,30 @@
-const Punto = () => {
+import styled from 'styled-components';
+import {puntoColor} from "../ressources/puntoColor";
+
+const PuntoTitle = styled.h1`
+    font-size: ${props => props.size}
+    `
+const Red = styled.span`
+      color: ${puntoColor.red};
+    `
+const Blue = styled.span`
+      color: ${puntoColor.blue};
+    `
+const Yellow = styled.span`
+      color: ${puntoColor.yellow};
+    `
+const Green = styled.span`
+      color: ${puntoColor.green};
+    `
+const Punto = ({size}) => {
     return (
-        <h1 className="title_punto">
-            <span className="title__red">P</span>
-            <span className="title__blue">u</span>
-            <span className="title__yellow">n</span>
-            <span className="title__green">t</span>
-            <span className="title__red">o</span>
-        </h1>
+        <PuntoTitle size={size}>
+            <Red>P</Red>
+            <Blue>u</Blue>
+            <Yellow>n</Yellow>
+            <Green>t</Green>
+            <Red>o</Red>
+        </PuntoTitle>
     );
 };
 
