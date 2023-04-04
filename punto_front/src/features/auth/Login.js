@@ -67,7 +67,7 @@ font-size:1.5rem
 const Login = () => {
     //useTitle('Player Login')
 
-    const userRef = useRef()
+    const emailRef = useRef()
     const errRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -80,7 +80,7 @@ const Login = () => {
     const [login, {isLoading}] = useLoginMutation()
 
     useEffect(() => {
-        userRef.current.focus()
+        emailRef.current.focus()
     }, [])
 
     useEffect(() => {
@@ -92,7 +92,6 @@ const Login = () => {
         e.preventDefault()
         try {
             const {accessToken} = await login({email, password}).unwrap()
-            console.log(accessToken)
             dispatch(setCredentials({accessToken}))
             setEmail('')
             setPassword('')
@@ -110,7 +109,7 @@ const Login = () => {
             errRef.current.focus();
         }
     }
-    const handleUserInput = (e) => setEmail(e.target.value)
+    const handleEmailInput = (e) => setEmail(e.target.value)
     const handlePwdInput = (e) => setPassword(e.target.value)
     //const handleToggle = () => setPersist(prev => !prev)
 
@@ -136,9 +135,9 @@ const Login = () => {
                         <Input
                             type="text"
                             id="email"
-                            ref={userRef}
+                            ref={emailRef}
                             value={email}
-                            onChange={handleUserInput}
+                            onChange={handleEmailInput}
                             autoComplete="off"
                             required
                         />

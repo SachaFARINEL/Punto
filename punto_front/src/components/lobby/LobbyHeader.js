@@ -2,7 +2,8 @@ import Header from "../Header";
 import {useEffect} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
-import {useNavigate, Link, useLocation} from "react-router-dom";
+import {useNavigate, Link} from "react-router-dom";
+//import {useLocation} from "react-router-dom";
 import {useSendLogoutMutation} from "../../features/auth/authApiSlice";
 import styled from 'styled-components';
 
@@ -29,7 +30,7 @@ const Button = styled.button`
 `
 const LobbyHeader = () => {
     const navigate = useNavigate()
-    const {pathname} = useLocation()
+    //const {pathname} = useLocation()
 
     const [sendLogout, {
         isLoading,

@@ -5,7 +5,6 @@ const LobbyLayout = () => {
     return (
         <>
             <LobbyHeader/>
-            <Outlet/>
         </>
     )
 }
