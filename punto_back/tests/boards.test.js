@@ -38,7 +38,7 @@ describe("GET /boards", () => {
     });
 });
 
-describe("GET /boards&?id=''", () => {
+describe("GET /boards/:id", () => {
     it("should return a board with a specific id", async () => {
         const board = await Board.create({});
         const boardID = (board._id).toString()
