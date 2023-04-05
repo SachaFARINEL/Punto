@@ -52,14 +52,13 @@ const LobbyHeader = () => {
     return (
         <>
             <Div>
-                <Link to='/'>
-                    <Header/>
-                </Link>
+
+                <Header/>
 
                 <Button
                     title="Logout"
                     onClick={onLogoutClicked}>
-                    Log Out  <FontAwesomeIcon icon={faRightFromBracket}/>
+                    Log Out <FontAwesomeIcon icon={faRightFromBracket}/>
                 </Button>
             </Div>
         </>

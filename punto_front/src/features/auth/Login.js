@@ -3,13 +3,12 @@ import {useNavigate, Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {setCredentials} from './authSlice'
 import {useLoginMutation} from './authApiSlice'
-//import usePersist from '../../hooks/usePersist'
-//import useTitle from '../../hooks/useTitle'
 import PulseLoader from 'react-spinners/PulseLoader'
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackward} from "@fortawesome/free-solid-svg-icons";
 import {puntoColor} from "../../ressources/puntoColor";
+import usePersist from "../../hooks/usePersist";
 
 const Icon = styled.div`
   margin-left: 5rem;
@@ -60,19 +59,24 @@ const Button = styled.button`
   }
 `
 const Error = styled.p`
-color: ${puntoColor.red};
-font-size:1.5rem
+  color: ${puntoColor.red};
+  font-size: 1.5rem
+`
+
+const Trust = styled.label`
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
 `
 
 const Login = () => {
-    //useTitle('Player Login')
-
     const emailRef = useRef()
     const errRef = useRef()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    //const [persist, setPersist] = usePersist()
+    const [persist, setPersist] = usePersist()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -111,7 +115,7 @@ const Login = () => {
     }
     const handleEmailInput = (e) => setEmail(e.target.value)
     const handlePwdInput = (e) => setPassword(e.target.value)
-    //const handleToggle = () => setPersist(prev => !prev)
+    const handleToggle = () => setPersist(prev => !prev)
 
     if (isLoading) return <PulseLoader color={"#FFF"}/>
 
@@ -150,7 +154,18 @@ const Login = () => {
                             value={password}
                             required
                         />
+
                         <Button>Sign In</Button>
+
+                        <Trust htmlFor="persist">
+                            <input
+                                type="checkbox"
+                                id="persist"
+                                onChange={handleToggle}
+                                checked={persist}
+                            />
+                            Trust this device
+                        </Trust>
                     </DivNewUserForm>
                 </form>
             </Form>

@@ -5,6 +5,7 @@ import NewUserForm from "./features/users/NewUserForm";
 import Login from './features/auth/Login'
 import Prefetch from "./features/auth/Prefetch";
 import LobbyLayout from './components/lobby/LobbyLayout'
+import PersistLogin from "./features/auth/PersistLogin";
 
 function App() {
     return (
@@ -20,9 +21,11 @@ function App() {
                 </Route>
 
                 {/* Protected routes */}
-                <Route element={<Prefetch/>}>
-                    <Route path="lobby" element={<LobbyLayout/>}>
+                <Route element={<PersistLogin/>}>
+                    <Route element={<Prefetch/>}>
+                        <Route path="lobby" element={<LobbyLayout/>}>
 
+                        </Route>
                     </Route>
                 </Route>
             </Route>

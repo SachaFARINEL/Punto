@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import {faBackward} from "@fortawesome/free-solid-svg-icons"
 import {Link} from 'react-router-dom'
 import {puntoColor} from "../../ressources/puntoColor";
+import {useLoginMutation} from "../auth/authApiSlice";
+import {setCredentials} from "../auth/authSlice";
+import {useDispatch} from "react-redux";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/
 const USERNAME_REGEX = /^.{4,}$/
@@ -82,8 +85,12 @@ const NewUserForm = () => {
     const [validUsername, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
+    const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [validPasswordConfirmation, setValidPasswordConfirmation] = useState(false)
     const [birthday, setBirthday] = useState('')
     const [validBirthday, setValidBirthday] = useState(false)
+    const [login] = useLoginMutation()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         setValidEmail(EMAIL_REGEX.test(email))
@@ -98,6 +105,10 @@ const NewUserForm = () => {
     }, [password])
 
     useEffect(() => {
+        setValidPasswordConfirmation(password === passwordConfirmation)
+    }, [password, passwordConfirmation])
+
+    useEffect(() => {
         setValidBirthday(BIRTHDAY_REGEX.test(birthday))
     }, [birthday])
 
@@ -107,21 +118,25 @@ const NewUserForm = () => {
             setUsername('')
             setPassword('')
             setBirthday('')
-            navigate('/lobby')
         }
-    }, [isSuccess, navigate])
+    }, [isSuccess])
 
     const onEmailChanged = e => setEmail(e.target.value)
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
+    const onPasswordConfirmationChanged = e => setPasswordConfirmation(e.target.value)
     const onBirthdayChanged = e => setBirthday(e.target.value)
 
-    const canSave = [validEmail, validUsername, validPassword, validBirthday].every(Boolean) && !isLoading
+    const canSave = [validEmail, validUsername, validPassword, validPasswordConfirmation, validBirthday].every(Boolean) && !isLoading
 
     const onSaveUserClicked = async (e) => {
         e.preventDefault()
         if (canSave) {
             await addNewUser({email, username, password, birthday})
+            const {accessToken} = await login({email, password}).unwrap()
+            console.log(accessToken)
+            dispatch(setCredentials({accessToken}))
+            navigate('/lobby')
         }
     }
 
@@ -176,6 +191,18 @@ const NewUserForm = () => {
                             value={password}
                             onChange={onPasswordChanged}
                             borderColor={validPassword ? puntoColor.green : puntoColor.red}
+                        />
+
+                        <label className="form__label" htmlFor="passwordConfirmation">
+                            Password confirmation:
+                        </label>
+                        <Input
+                            id="passwordConfirmation"
+                            name="passwordConfirmation"
+                            type="password"
+                            value={passwordConfirmation}
+                            onChange={onPasswordConfirmationChanged}
+                            borderColor={validPasswordConfirmation && passwordConfirmation.length !== 0 ? puntoColor.green : puntoColor.red}
                         />
 
                         <label className="form__label" htmlFor="birthday">
