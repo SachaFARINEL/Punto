@@ -1,6 +1,6 @@
 import {store} from '../../app/store'
 import {usersApiSlice} from "../users/usersApiSlice";
-import {cardsApiSlice} from "../cards/cardsApiSlice";
+import {cardsApiSlice} from "../game/cards/cardsApiSlice";
 import {useEffect} from "react";
 import {Outlet} from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {puntoColor} from "../ressources/puntoColor";
+import {puntoColor} from "../ressources/Constants";
 
 const PuntoTitle = styled.h1`
     font-size: ${props => props.size}

@@ -7,7 +7,7 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBackward} from "@fortawesome/free-solid-svg-icons";
-import {puntoColor} from "../../ressources/puntoColor";
+import {puntoColor} from "../../ressources/Constants";
 import usePersist from "../../hooks/usePersist";
 
 const Icon = styled.div`

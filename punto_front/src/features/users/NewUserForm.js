@@ -6,7 +6,7 @@ import {faSave} from "@fortawesome/free-solid-svg-icons"
 import styled from 'styled-components';
 import {faBackward} from "@fortawesome/free-solid-svg-icons"
 import {Link} from 'react-router-dom'
-import {puntoColor} from "../../ressources/puntoColor";
+import {puntoColor} from "../../ressources/Constants";
 import {useLoginMutation} from "../auth/authApiSlice";
 import {setCredentials} from "../auth/authSlice";
 import {useDispatch} from "react-redux";

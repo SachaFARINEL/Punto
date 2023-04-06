@@ -6,6 +6,8 @@ import Login from './features/auth/Login'
 import Prefetch from "./features/auth/Prefetch";
 import LobbyLayout from './components/lobby/LobbyLayout'
 import PersistLogin from "./features/auth/PersistLogin";
+import GlobalDndContext from "./ressources/GlobalDndContext";
+import Game from "./features/game/Game";
 
 function App() {
     return (
@@ -23,7 +25,11 @@ function App() {
                 {/* Protected routes */}
                 <Route element={<PersistLogin/>}>
                     <Route element={<Prefetch/>}>
-                        <Route path="lobby" element={<LobbyLayout/>}>
+
+                        <Route path="lobby" element={
+                            <GlobalDndContext>
+                                <LobbyLayout/>
+                            </GlobalDndContext>}>
 
                         </Route>
                     </Route>

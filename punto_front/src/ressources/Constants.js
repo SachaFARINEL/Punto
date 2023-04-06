@@ -4,3 +4,12 @@ export const puntoColor = {
     red: '#e2100a',
     green: '#6dba0f',
 }
+
+export const dragTypes = {
+    CARD: 'card'
+}
+
+export const boardLength = {
+    rows : 11,
+    columns : 11
+}

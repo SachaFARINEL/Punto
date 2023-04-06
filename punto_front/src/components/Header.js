@@ -1,7 +1,6 @@
 import Punto from './Punto'
 import styled from 'styled-components';
-import {Link} from 'react-router-dom'
-import {puntoColor} from "../ressources/puntoColor";
+import {puntoColor} from "../ressources/Constants";
 
 const HeaderPunto = styled.div`
   display: flex;
