@@ -5,9 +5,11 @@ import NewUserForm from "./features/users/NewUserForm";
 import Login from './features/auth/Login'
 import Prefetch from "./features/auth/Prefetch";
 import LobbyLayout from './components/lobby/LobbyLayout'
+import BattleField from './features/game/BattleField'
 import PersistLogin from "./features/auth/PersistLogin";
 import GlobalDndContext from "./ressources/GlobalDndContext";
 import Game from "./features/game/Game";
+import LobbyHeader from "./components/lobby/LobbyHeader";
 
 function App() {
     return (
@@ -25,13 +27,8 @@ function App() {
                 {/* Protected routes */}
                 <Route element={<PersistLogin/>}>
                     <Route element={<Prefetch/>}>
-
-                        <Route path="lobby" element={
-                            <GlobalDndContext>
-                                <LobbyLayout/>
-                            </GlobalDndContext>}>
-
-                        </Route>
+                        <Route path="lobby" element={<LobbyLayout/>}/>
+                        <Route path="battlefield" element={<GlobalDndContext><BattleField/></GlobalDndContext>}/>
                     </Route>
                 </Route>
             </Route>

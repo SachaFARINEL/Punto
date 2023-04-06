@@ -10,18 +10,34 @@ const Row = styled.div`
 `
 
 const Grid = styled.div`
-  margin-top: 4rem;
+  margin-top: 2rem;
 `
-export default function Board({}) {
+const createGridArray = () => {
     const grid = []
     for (let i = 0; i < boardLength.rows; i++) {
         for (let j = 0; j < boardLength.columns; j++) {
-            grid.push(({x: i, y: j}));
+            grid.push(({'position': {x: i, y: j}}));
         }
     }
+    return grid
+}
 
-    function filterByY(y) {
-        return grid.filter(square => square.y === y);
+
+export default function Board({}) {
+    const [grid, setGrid] = useState(createGridArray())
+    const updateGrid = (x, y, card) => {
+        setGrid(grid =>
+            grid.map(square =>
+                square.position.x === x && square.position.y === y
+                    ? Object.assign({}, square, {card})
+                    : square
+            )
+        );
+
+    };
+
+    const filterByY = (y) => {
+        return grid.filter(square => square.position.y === y);
     }
 
     const rows = [];
@@ -30,9 +46,11 @@ export default function Board({}) {
             <Row className="row" key={i}>
                 {filterByY(i).map(square => (
                     <div
-                        key={`${square.x}-${square.y}`}
+                        key={`${square.position.x}-${square.position.y}`}
                     >
-                        <Case x={square.x} y={square.y}/>
+                        <Case x={square.position.x} y={square.position.y} updateGrid={updateGrid}>
+                            {square.card && <Card color={square.card.color} num={square.card.num}/>}
+                        </Case>
                     </div>
                 ))}
             </Row>
@@ -40,10 +58,8 @@ export default function Board({}) {
     }
 
     return (
-        <>
-            <Grid>
-                {rows}
-            </Grid>
-        </>
+        <Grid>
+            {rows}
+        </Grid>
     )
 }
