@@ -52,7 +52,6 @@ const PersistLogin = () => {
     if (!persist) { // persist: no
         content = <Outlet />
     } else if (isLoading) { //persist: yes, token: no
-        console.log('loading')
         content = <PulseLoader color={"#FFF"} />
     } else if (isError) { //persist: yes, token: no
         console.log('error')
@@ -63,7 +62,6 @@ const PersistLogin = () => {
             </p>
         )
     } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
-        console.log('success')
         content = <Outlet />
     } else if (token && isUninitialized) { //persist: yes, token: yes
         console.log('token and uninit')

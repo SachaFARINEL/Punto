@@ -15,7 +15,7 @@ const Grid = styled.div`
 `
 
 export default function Board({}) {
-    const {grid, updateGrid} = useGameContext()
+    const {grid} = useGameContext()
 
 
     const filterByY = (y) => {
@@ -30,7 +30,7 @@ export default function Board({}) {
                     <div
                         key={`${square.position.x}-${square.position.y}`}
                     >
-                        <Case x={square.position.x} y={square.position.y} updateGrid={updateGrid}>
+                        <Case x={square.position.x} y={square.position.y}>
                             {square.card && <Card color={square.card.color} num={square.card.num}/>}
                         </Case>
                     </div>

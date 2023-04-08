@@ -10,15 +10,14 @@ const ACase = styled.div`
   position: relative;
   padding: 2px;
 `
-export default function Case({x, y, updateGrid, children}) {
-    const {updateHand} = useGameContext();
+export default function Case({x, y, children}) {
+    const {updateHand, updateGrid} = useGameContext();
 
     const [{isOver, canDrop}, drop] = useDrop(() => ({
             accept: dragTypes.CARD,
             drop: (card) => {
-                console.log("Dropped card:", card.num, card.color);
-                updateGrid(x, y, card)
-                updateHand()
+                    updateGrid(x, y, card)
+                    updateHand()
             },
             collect: monitor => ({
                 isOver: !!monitor.isOver(),

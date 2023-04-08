@@ -17,7 +17,6 @@ const CardLocation = styled.div`
 
 const Hand = () => {
     const {cardInHand} = useGameContext()
-    console.log(cardInHand)
     const num = cardInHand?.number
     const color = cardInHand?.color
     return (

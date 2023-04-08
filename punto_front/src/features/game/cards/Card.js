@@ -30,11 +30,15 @@ function generateCard(num, color) {
 }
 
 export default function Card({num, color, isDraggable}) {
+    if (isDraggable) {
+        console.log(num, color)
+    }
     const [{isDragging, canDrag}, drag] = useDrag(() => ({
         type: dragTypes.CARD,
         item: {
             color,
             num,
+            'isDraggable' : isDraggable
         },
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
