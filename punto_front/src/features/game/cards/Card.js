@@ -34,7 +34,7 @@ export default function Card({num, color, isDraggable}) {
         type: dragTypes.CARD,
         item: {
             color,
-            num
+            num,
         },
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
@@ -44,6 +44,6 @@ export default function Card({num, color, isDraggable}) {
     const [stringNumber, dice] = generateCard(num, color)
 
     return (
-        <div ref={drag} className={`dice ${stringNumber}-face`}>{dice}</div>
+        <div key={`${num}-${color}`} ref={drag} className={`dice ${stringNumber}-face`}>{dice}</div>
     )
 }

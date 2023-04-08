@@ -1,7 +1,7 @@
 import {useDrop} from "react-dnd";
-import {puntoColor, dragTypes} from "../../ressources/Constants";
+import {dragTypes} from "../../ressources/Constants";
 import styled from "styled-components";
-import {useState} from "react";
+import {useGameContext} from "./GameProvider";
 
 const ACase = styled.div`
   width: 3rem;
@@ -11,11 +11,14 @@ const ACase = styled.div`
   padding: 2px;
 `
 export default function Case({x, y, updateGrid, children}) {
+    const {updateHand} = useGameContext();
 
     const [{isOver, canDrop}, drop] = useDrop(() => ({
             accept: dragTypes.CARD,
             drop: (card) => {
+                console.log("Dropped card:", card.num, card.color);
                 updateGrid(x, y, card)
+                updateHand()
             },
             collect: monitor => ({
                 isOver: !!monitor.isOver(),

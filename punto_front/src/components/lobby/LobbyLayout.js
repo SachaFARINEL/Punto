@@ -1,13 +1,6 @@
 import LobbyHeader from "./LobbyHeader";
-import {Outlet} from "@mui/icons-material";
-import Card from "../../features/game/cards/Card";
-import Case from "../../features/game/Case";
-import Board from "../../features/game/Board";
-import BackCard from "../../features/game/cards/BackCard";
-import Punto from '../Punto'
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-import BattleField from "../../features/game/BattleField";
 
 const LinkTo = styled.div`
   font-size: 1rem;

@@ -134,7 +134,6 @@ const NewUserForm = () => {
         if (canSave) {
             await addNewUser({email, username, password, birthday})
             const {accessToken} = await login({email, password}).unwrap()
-            console.log(accessToken)
             dispatch(setCredentials({accessToken}))
             navigate('/lobby')
         }

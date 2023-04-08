@@ -1,8 +1,7 @@
 import Card from "./cards/Card";
 import BackCard from "./cards/BackCard";
-import {useShuffleAndDistributeQuery} from "./cards/cardsApiSlice";
 import styled from "styled-components";
-import {useState} from "react";
+import {useGameContext} from "./GameProvider";
 
 const Center = styled.div`
       display: flex;
@@ -17,22 +16,17 @@ const CardLocation = styled.div`
     `
 
 const Hand = () => {
-    const {data, isError} = useShuffleAndDistributeQuery(2);
-    const [deck, setDeck] = useState(data && data.firstDeck)
-    const [cardInHand, setCardInHand] = useState(deck)
-    console.log(data && data.firstDeck)
-
+    const {cardInHand} = useGameContext()
     console.log(cardInHand)
-
-
-
+    const num = cardInHand?.number
+    const color = cardInHand?.color
     return (
         <Center>
             <CardLocation>
                 <BackCard/>
             </CardLocation>
             <CardLocation>
-                <Card num={5} color={'green'} isDraggable={true}/>
+                {color && num && <Card num={cardInHand?.number} color={cardInHand?.color} isDraggable={true} />}
             </CardLocation>
         </Center>
     )
