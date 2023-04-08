@@ -3,6 +3,7 @@ import {
     createEntityAdapter
 } from "@reduxjs/toolkit";
 import {apiSlice} from "../../../app/api/apiSlice"
+import {usersApiSlice} from "../../users/usersApiSlice";
 
 const cardsAdapter = createEntityAdapter({})
 
@@ -30,10 +31,19 @@ export const cardsApiSlice = apiSlice.injectEndpoints({
                     ]
                 } else return [{type: 'Card', id: 'LIST'}]
             }
+        }),
+        shuffleAndDistribute: builder.query({
+            query: numPlayers => `/cards/shuffleAndDistribute?players=${numPlayers}`,
+            validateStatus: (response, result) => {
+                return response.status === 200 && !result.isError
+            },
         })
     }),
 })
 
+export const {
+    useShuffleAndDistributeQuery,
+} = cardsApiSlice
 // returns the query result object
 export const selectCardsResult = cardsApiSlice.endpoints.getCards.select()
 

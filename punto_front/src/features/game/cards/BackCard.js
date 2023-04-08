@@ -11,7 +11,7 @@ const Div = styled.div`
 export default function BackCard() {
     return (
         <Div className={'dice'}>
-            <Punto size={'1rem'}/>
+            <Punto size={'0.8rem'}/>
         </Div>
     )
 }

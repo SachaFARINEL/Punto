@@ -29,8 +29,8 @@ function generateCard(num, color) {
     return [intToStringNumber[num - 1], diceElement]
 }
 
-export default function Card({num, color}) {
-    const [{isDragging}, drag] = useDrag(() => ({
+export default function Card({num, color, isDraggable}) {
+    const [{isDragging, canDrag}, drag] = useDrag(() => ({
         type: dragTypes.CARD,
         item: {
             color,
@@ -39,6 +39,7 @@ export default function Card({num, color}) {
         collect: monitor => ({
             isDragging: !!monitor.isDragging(),
         }),
+        canDrag: () => isDraggable
     }))
     const [stringNumber, dice] = generateCard(num, color)
 
