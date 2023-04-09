@@ -1,4 +1,38 @@
-### Punto
+# Punto
 
-# How to start the project ?
-in punto folder : docker compose up -d --build
+### Lancer le projet
+1. L'ensemble du projet est sur Docker. Il faut donc télécharger DockerDesktop : https://www.docker.com/products/docker-desktop/
+2. Lancer DockerDesktop
+3. Dans un terminal, rendez-vous à la racine du dossier "**Punto**"
+4. Entrer la commande : `docker compose up -d --build`
+5. Quand la commande est fini, vous pouvez vous rendre sur : http://localhost:3000/
+6. Si vous le souhaitez, un utilisateur est déjà crée : farinel.sacha@gmail.com // test
+
+### Fonctionnalités et compétences attendues en NodeJS
+
+1. [x] Un plateau graphique et un ensemble de cartes
+2. [ ] Un fonctionnement exact des règles du jeu avec des événements à gérer
+3. [x] Un système d'inscription
+4. [ ] Un système multijoueur
+5. [x] Un packaging parfait et expliqué *(l'installation doit être détaillée dans le rapport)*
+6. [x] Des commentaires
+7. [x] Des tests documentés *(unitaires)*
+8. [x] Gestion de l'historique des parties
+9. [x] Mise en place d'une ou plusieurs API *(accès à la base, gestion d'une partie, distribution des cartes aléatoirement, ...)*
+10. [x] Séparation back-end / front-end documentée
+11. [x] Utilisation de REACT ou équivalent (justifier chaque techno)
+12. [x] Documentation et description de fonctionnalités spécifiques à nodejs et react *(promise, routage)*
+13. [ ] BONUS : mise en place de joueurs gérés par une IA basée sur node
+
+### Fonctionnalités et compétences attendues en NoSQL
+
+
+1. [x] Description packaging et installation d'un serveur Mongodb
+2. [x] décrire la/les bases et la/les collections utililes *(gestion du jeu, gestion de l'historique)*
+3. [x] Création et description des schémas *(les schémas doivent être riches)*
+4. [x] Description des procédures de sauvegarde / transferts des données
+5. [ ] Réalisation et description d'une 20ène de requêtes de sélection avec des niveaux de difficultés différents *(filtrage, projection, aggregate)*
+6. [ ] Réalisation et description d'une 10ène de requêtes de modifications/suppressions avec des niveaux de difficultés différents
+7. [ ] Réalisations et description d'une 10ène de scripts nodejs connectés à la base *(scripts d'administration, requêtes, tests)*
+8. [ ] Réalisations, démonstrations et documentation du concept d'index
+9. [ ] BONUS : comparaison avec une base SQL, à la fois en terme de structure *(normalisé/dénormalisé)* et en terme d'efficacité *(tests d'accès/modification sur des données générées en masse)*
