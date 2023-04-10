@@ -14,7 +14,7 @@
 
 1. Il faut se rendre à la racine du dossier : **punto_back**
 2. Pour lancer les tests unitaires, il suffit de faire la commande : `npm run test` *(les tests sont disponibles dans /tests)*
-3. Quelques tests de montée en charge sont disponible dans **/scripts/loadTesting**. Pour les lancer : `artillery run scripts/loadTesting/$(nomDuScript)`
+3. Quelques tests de montée en charge sont disponibles dans **/scripts/loadTesting**. Pour les lancer : `artillery run scripts/loadTesting/$(nomDuScript)`
 4. Un exemple de test de montée en charge sur la création d'utilisateurs : `artillery run scripts/loadTesting/createUser.yaml`
 
 ### Fonctionnalités et compétences attendues en NodeJS :
