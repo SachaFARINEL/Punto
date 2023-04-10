@@ -1,49 +1,72 @@
+/* Import font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
+/* Reset default margin, padding and border box styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Set default font size */
 html {
     font-size: 1rem;
 }
 
+/* Set body styles */
 body {
+    /* Set font family to Fira Code */
     font-family: 'Fira Code', monospace;
+    /* Set text color to white */
     color: white;
+    /* Set background color to black */
     background: black;
 }
 
+/* Set styles for title container */
 .div_title {
+    /* Set flex display and column direction */
     display: flex;
     flex-direction: column;
+    /* Set height to full viewport height */
     height: 100vh;
+    /* Center items vertically and horizontally */
     justify-content: center;
     align-items: center;
 }
 
+/* Set styles for Punto title */
 .title_punto {
+    /* Set large font size */
     font-size: 8rem;
 }
 
+/* Set styles for API title */
 .title_api {
+    /* Set smaller font size */
     font-size: 3rem;
 }
 
+/* Set styles for red Punto dot */
 .punto__red{
+    /* Set color to red */
     color: #e2100a
 }
 
+/* Set styles for blue Punto dot */
 .punto__blue{
+    /* Set color to blue */
     color: #00b4e7
 }
 
+/* Set styles for yellow Punto dot */
 .punto__yellow{
+    /* Set color to yellow */
     color: #feb008
 }
 
+/* Set styles for green Punto dot */
 .punto__green{
+    /* Set color to green */
     color: #6dba0f
 }
