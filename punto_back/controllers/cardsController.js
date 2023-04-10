@@ -17,7 +17,7 @@ const getAllCards = asyncHandler(async (req, res) => {
 })
 
 const shuffleAndDistribute = asyncHandler(async (req, res) => {
-    if (!req.query.players || req.query.players > 4) {
+    if (!req.query.players || req.query.players > 4 || req.query.players < 2) {
         return res.status(400).json({message: 'You need at least 2 players and max 4'})
     }
 

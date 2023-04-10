@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon -L server",
     "dev": "nodemon server",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=50000 --runInBand --watchAll"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=50000"
   },
   "keywords": [],
   "author": "",

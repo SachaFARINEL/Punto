@@ -23,6 +23,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 // @access Private
 const createNewUser = asyncHandler(async (req, res) => {
     const {email, username, password, birthday} = req.body
+    console.log(email, username, password, birthday)
 
     // Confirm data
     if (!email || !username || !password || !birthday) {

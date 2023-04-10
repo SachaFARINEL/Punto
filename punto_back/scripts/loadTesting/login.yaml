@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:3500" # Replace with the URL of your application
+phases:
+  - duration: 60
+    arrivalRate: 10
+scenarios:
+  - name: "Login"
+    flow:
+      - post:
+          url: "/auth"
+          json:
+            email: "farinel.sacha@gmail.com"
+            password: "test"
