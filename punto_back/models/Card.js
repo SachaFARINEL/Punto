@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// Define the schema for the "cards" collection
 const cardSchema = new mongoose.Schema({
     number: {
         type: Number,
@@ -13,4 +14,5 @@ const cardSchema = new mongoose.Schema({
     }
 })
 
+// Export a mongoose model based on the cardSchema
 module.exports = mongoose.model('Card', cardSchema)

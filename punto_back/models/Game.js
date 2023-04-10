@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+// Define the schema for a game
 const gameSchema = new mongoose.Schema({
     board: {
         type: mongoose.Schema.Types.ObjectId,
@@ -9,19 +10,19 @@ const gameSchema = new mongoose.Schema({
         {
             idPlayer: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'User'
+                ref: 'User' // The player is referenced to a User
             },
             cards: [{
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Card',
-                default: null
+                default: null // Cards are referenced to a Card schema and set to null by default
             }]
         }
     ],
     winner: {
         type: mongoose.Schema.Types.ObjectId,
-        default: null
+        default: null // The game has no winner by default
     }
 })
 
-module.exports = mongoose.model('Game', gameSchema)
+module.exports = mongoose.model('Game', gameSchema) // Export the Game model based on the schema above
