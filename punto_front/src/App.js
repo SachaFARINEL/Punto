@@ -8,8 +8,6 @@ import LobbyLayout from './components/lobby/LobbyLayout'
 import BattleField from './features/game/BattleField'
 import PersistLogin from "./features/auth/PersistLogin";
 import GlobalDndContext from "./ressources/GlobalDndContext";
-import Game from "./features/game/Game";
-import LobbyHeader from "./components/lobby/LobbyHeader";
 
 function App() {
     return (

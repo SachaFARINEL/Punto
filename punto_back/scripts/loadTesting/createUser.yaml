@@ -2,7 +2,7 @@ config:
   target: "http://localhost:3500" # Replace with the URL of your application
   phases:
     - duration: 60
-      arrivalRate: 5
+      arrivalRate: 1
 scenarios:
   - name: "Create user"
     flow:

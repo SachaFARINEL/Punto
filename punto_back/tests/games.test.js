@@ -19,9 +19,6 @@ const jwtToken = jwt.sign(
 // Connecting to the database before each test.
 beforeAll(async () => {
     await mongoose.connect(process.env.DATABASE_URI_TEST);
-    if (mongoose.connection.collections.games) {
-        await mongoose.connection.dropCollection("games");
-    }
 });
 
 // Closing database connection after each test.

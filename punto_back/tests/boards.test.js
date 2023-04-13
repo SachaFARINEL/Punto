@@ -1,9 +1,10 @@
-const mongoose = require("mongoose");
-const request = require("supertest");
-const app = require('../server')
-const Board = require('../models/Board')
-const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose"); // Importing the mongoose library.
+const request = require("supertest"); // Importing supertest to test the API.
+const app = require('../server') // Importing the app.
+const Board = require('../models/Board') // Importing the Board model.
+const jwt = require("jsonwebtoken"); // Importing jsonwebtoken to create a fake refreshToken.
 
+// Creating a fake refreshToken.
 const jwtToken = jwt.sign(
     {
         "UserInfo": {
@@ -14,7 +15,7 @@ const jwtToken = jwt.sign(
     {expiresIn: '15m'}
 )
 
-// Connecting to the database before each test.
+// Connecting to the database before all test.
 beforeAll(async () => {
     await mongoose.connect(process.env.DATABASE_URI_TEST);
     if (mongoose.connection.collections.boards) {
@@ -22,7 +23,7 @@ beforeAll(async () => {
     }
 });
 
-// Closing database connection after each test.
+// Closing database connection after all test.
 afterAll(async () => {
     await mongoose.connection.close();
 });
